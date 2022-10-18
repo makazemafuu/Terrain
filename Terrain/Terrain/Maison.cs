@@ -7,17 +7,17 @@ namespace Terrain
     {
         public string adresse;
         public float superficie;
-        public int nbPieces;
-        public bool jardin;
+        public int nbEtages;
+        public bool baignoire;
 
         // constructeur Maison (de la class Maison)
         // initialisation
-        public Maison(string Adresse, float Superficie, int NbPiece, bool Jardin)
+        public Maison(string Adresse, float Superficie, int NbEtages, bool Baignoire)
         {
             adresse = Adresse;
             superficie = Superficie;
-            nbPieces = NbPiece;
-            jardin = Jardin;
+            nbEtages = NbEtages;
+            baignoire = Baignoire;
         }
 
         // substitution par la méthode ToString : chaque classe hérite implicitement de la classe Object
@@ -34,8 +34,8 @@ namespace Terrain
             string ToString = base.ToString();
             string toString = String.Format("Adresse = {0}\n", this.adresse);
             toString += String.Format("Superficie = {0}m²\n", this.superficie);
-            toString += String.Format("Nombre de pièces = {0}\n", this.nbPieces);
-            toString += String.Format("Présence d'un jardin = {0}\n", this.jardin ? "Oui" : "Non");
+            toString += String.Format("Nombre d'étages = {0}\n", this.nbEtages);
+            toString += String.Format("Présence d'une baignoire = {0}\n", this.baignoire ? "Oui" : "Non");
             toString += String.Format("> VALEUR = {0}$", this.EvaluationValeur());
 
             return toString;
@@ -50,8 +50,8 @@ namespace Terrain
             // this = permet de lever des ambiguïtés de nommage entre attributs et paramètres
             // utilisé lorsqu'on ne nomme pas différent
 
-            if (this.jardin) { facteur += 500; }
-            if (this.nbPieces > 3) { facteur += 200; }
+            if (this.baignoire) { facteur += 500; }
+            if (this.nbEtages > 3) { facteur += 200; }
 
             // Regex.IsMatch : permet de renvoyer une occurence qui est délimité par les \b dans la string qui suit
             // Si Regex.IsMatch = true par exemple ici pour Paris ça va renvoyer le facteur 7000

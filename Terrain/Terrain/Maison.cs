@@ -75,12 +75,9 @@ namespace Terrain
         public int CoutFinirSalleDeBain()
         {
             int facteur = 50;
-            int facteur2 = 0;
 
             if (this.baignoire) { facteur += 50; }
             if (this.nbEtages > 4) { facteur += 50; }
-
-            if (!baignoire) { return facteur2; }
 
             return this.nbEtages * facteur;
 

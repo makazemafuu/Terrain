@@ -9,8 +9,12 @@ namespace Terrain
         public int nbPieces;
         public bool jardin;
 
-        public Maison()
+        public Maison(string Adresse, float Superficie, int NbPiece, bool Jardin)
         {
+            adresse = Adresse;
+            superficie = Superficie;
+            nbPieces = NbPiece;
+            jardin = Jardin;
 
         }
     }

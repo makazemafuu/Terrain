@@ -1,21 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Terrain
 {
-    public class Program
+    public class Maison
     {
-        static void Main(string[] args)
-        {
-            Maison uneMaison = new Maison();
+        public string adresse;
+        public float superficie;
+        public int nbPieces;
+        public bool jardin;
 
-            Console.WriteLine("Adresse = {0}", uneMaison.adresse);
-            Console.WriteLine("Superficie = {0}", uneMaison.superficie);
-            Console.WriteLine("Nombre de pièces = {0}", uneMaison.nbPieces);
-            Console.WriteLine("Présence d'un jardin = {0}", uneMaison.jardin);
+        public Maison(string Adresse, float Superficie, int NbPiece, bool Jardin)
+        {
+            adresse = Adresse;
+            superficie = Superficie;
+            nbPieces = NbPiece;
+            jardin = Jardin;
         }
     }
 }

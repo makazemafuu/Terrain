@@ -36,6 +36,16 @@ namespace Terrain
             toString += String.Format("Superficie = {0}m²\n", this.superficie);
             toString += String.Format("Nombre d'étages = {0}\n", this.nbEtages);
             toString += String.Format("Présence d'une baignoire = {0}\n", this.baignoire ? "Oui" : "Non");
+
+            if (baignoire)
+            {
+                toString += String.Format("Coûts totaux de la construction de la baignoire (si applicable) = {0}$\n", this.CoutFinirSalleDeBain());
+            }
+            else
+            {
+                // empty, on ne veut rien afficher
+            }
+
             toString += String.Format("> VALEUR = {0}$", this.EvaluationValeur());
 
             return toString;
@@ -50,7 +60,7 @@ namespace Terrain
             // this = permet de lever des ambiguïtés de nommage entre attributs et paramètres
             // utilisé lorsqu'on ne nomme pas différent
 
-            if (this.baignoire) { facteur += 500; }
+            if (this.baignoire) { facteur += 10; }
             if (this.nbEtages > 3) { facteur += 200; }
 
             // Regex.IsMatch : permet de renvoyer une occurence qui est délimité par les \b dans la string qui suit
@@ -60,6 +70,20 @@ namespace Terrain
             else if (Regex.IsMatch(this.adresse, @"\bLyon\b")) { facteur += 2000; }
 
             return this.superficie * facteur;
+        }
+
+        public int CoutFinirSalleDeBain()
+        {
+            int facteur = 50;
+            int facteur2 = 0;
+
+            if (this.baignoire) { facteur += 50; }
+            if (this.nbEtages > 4) { facteur += 50; }
+
+            if (!baignoire) { return facteur2; }
+
+            return this.nbEtages * facteur;
+
         }
 
     }

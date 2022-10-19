@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using Terrain;
 
-namespace ExemplePOO
+namespace Terrain
 {
     public class Terrain : Bien
     {
@@ -17,10 +17,10 @@ namespace ExemplePOO
 
         public override string ToString()
         {
-            string ToString = base.ToString();
-            string toString = String.Format("Nombre de cotés clorutés = {0}\n", this.nbCotesClotures);
+            string toString = base.ToString();
+            toString = String.Format("Nombre de cotés clorutés = {0}\n", this.nbCotesClotures);
             toString += String.Format("Présence d'une rivière = {0}\n", this.riviere ? "Oui" : "Non");
-            toString += String.Format("> VALEUR = {0}$\n", this.EvaluationValeur());
+            toString += String.Format("> VALEUR = {0}$", this.EvaluationValeur());
             return toString;
         }
 

@@ -19,7 +19,6 @@ namespace Terrain
 
         public override string ToString()
         {
-            string ToString = base.ToString();
             string toString = String.Format("Adresse = {0}\n", this.adresse);
             toString += String.Format("Superficie = {0}m²\n", this.superficie);
 

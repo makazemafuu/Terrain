@@ -6,22 +6,18 @@ namespace Terrain
     {
         static void Main(string[] args)
         {
-            Maison uneMaison = new Maison("11 Rue des Chartreux, 69001 Lyon", 58f, 4, false);
-            Maison uneAutreMaison = new Maison("4 place Saint Louis, 22100 Dinan", 86.5f, 5, true);
-            Maison uneDerniereMaison = new Maison("26 Boulevard Claude Lorrin, 40100 Dax", 25.2f, 2, false);
+            Maison UneMaison = new Maison("11 Rue des Chartreux, 69001 Lyon", 58f, 4, false);
+            Maison UneAutreMaison = new Maison("4 place Saint Louis, 22100 Dinan", 86.5f, 5, true);
+            Maison UneDerniereMaison = new Maison("26 Boulevard Claude Lorrin, 40100 Dax", 25.2f, 2, false);
 
-            // tableau (array) du constructeur
-            // le constructeur créer l'objet
-            // une classe peut pas être appelé, lorsqu'un constructeur n'est pas créer
-            // il y en a un par défaut, en créer un supprime celui par défaut
+            Terrain UnTerrain = new Terrain("55 route cabossée, 29130 Locmaria-Plouzané", 5000f, 2, true);
+            Terrain UnAutreTerrain = new Terrain("102 route des volcans, 63000 Clermont-Ferrand", 1500f, 4, false);
 
-            Maison[] CatalogueMaisons = new Maison[] { uneMaison, uneAutreMaison, uneDerniereMaison };
+            Bien[] CatalogueBiens = new Bien[] { UneMaison, UneAutreMaison, UneDerniereMaison, UnTerrain, UnAutreTerrain };
 
-            // boucle qui permet de passer tour par tour dans chaque élément du tableau ici
-
-            foreach (Maison M in CatalogueMaisons)
+            foreach (Bien B in CatalogueBiens)
             {
-                Console.WriteLine(M);
+                Console.WriteLine(B);
                 Console.Write("\n");
             }
         }

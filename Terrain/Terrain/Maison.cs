@@ -3,39 +3,31 @@ using System.Text.RegularExpressions;
 
 namespace Terrain
 {
-    public class Maison
+    public class Maison : Bien
     {
-        public string adresse;
-        public float superficie;
         public int nbEtages;
         public bool baignoire;
 
         // constructeur Maison (de la class Maison)
         // initialisation
-        public Maison(string Adresse, float Superficie, int NbEtages, bool Baignoire)
+        public Maison(string Adresse, float Superficie, int NbEtages, bool Baignoire) : base(Adresse, Superficie)
         {
-            adresse = Adresse;
-            superficie = Superficie;
             nbEtages = NbEtages;
             baignoire = Baignoire;
         }
 
-        // substitution par la méthode ToString : chaque classe hérite implicitement de la classe Object
-        // ainsi ToString retourne une représentation sous forme de chaîne de caractère de cet objet
-        // ex : toutes les variables de type int ont une méthode ToString
-
-        // méthode = fonction mais fonction =/= méthode
-        // méthode car c'est dans une classe
         public override string ToString()
         {
-            // ça va retourner le namespace + le nom de la class
-            //return base.ToString();
-
-            string ToString = base.ToString();
-            string toString = String.Format("Adresse = {0}\n", this.adresse);
-            toString += String.Format("Superficie = {0}m²\n", this.superficie);
-            toString += String.Format("Nombre d'étages = {0}\n", this.nbEtages);
+            string toString = base.ToString();
+            toString = String.Format("Nombre d'étages = {0}\n", this.nbEtages);
             toString += String.Format("Présence d'une baignoire = {0}\n", this.baignoire ? "Oui" : "Non");
+
+            // substitution par la méthode ToString : chaque classe hérite implicitement de la classe Object
+            // ainsi ToString retourne une représentation sous forme de chaîne de caractère de cet objet
+            // ex : toutes les variables de type int ont une méthode ToString
+
+            // méthode = fonction mais fonction =/= méthode
+            // méthode car c'est dans une classe
 
             if (baignoire)
             {

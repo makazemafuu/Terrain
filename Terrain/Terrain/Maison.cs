@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace Terrain
 {
@@ -26,12 +27,13 @@ namespace Terrain
         public override string ToString()
         {
             // Get the € sign to work
-            Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.UTF8;
 
             // redéfinir la string ToString puisqu'on l'override (donc ajoute)
             string toString = base.ToString();
 
             // NE PAS OUBLIER LE + SINON TU ECRASE ! :'))
+            // .Format est une méthode de formatage
             toString += String.Format("Nombre de pièces = {0}\n", this.nbPieces);
             toString += String.Format("Nombre d'étages = {0}\n", this.nbEtages);
             toString += String.Format("Présence d'une baignoire = {0}\n", this.baignoire ? "Oui" : "Non");
@@ -48,6 +50,7 @@ namespace Terrain
             {
                 // Get the € sign to work
                 Console.OutputEncoding = Encoding.UTF8;
+
                 toString += String.Format("Coûts totaux de la construction de la baignoire (si applicable) = {0}€\n", this.CoutFinirSalleDeBain());
             }
             else

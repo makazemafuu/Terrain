@@ -19,6 +19,7 @@ namespace Terrain
         {
             // Get the € sign to work
             Console.OutputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.Unicode;
 
             string toString = base.ToString();
             toString += String.Format("Nombre de cotés clorutés = {0}\n", this.nbCotesClotures);

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Terrain
 {
@@ -13,8 +10,8 @@ namespace Terrain
 
         public Bien(string Adresse, float Superficie)
         {
-            adresse = Adresse;
-            superficie = Superficie;
+            this.adresse = Adresse;
+            this.superficie = Superficie;
         }
 
         public override string ToString()

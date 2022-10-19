@@ -18,8 +18,11 @@ namespace Terrain
 
         public override string ToString()
         {
+            // redéfinir la string ToString puisqu'on l'override (donc ajoute)
             string toString = base.ToString();
-            toString = String.Format("Nombre d'étages = {0}\n", this.nbEtages);
+
+            // NE PAS OUBLIER LE + SINON TU ECRASE ! :'))
+            toString += String.Format("Nombre d'étages = {0}\n", this.nbEtages);
             toString += String.Format("Présence d'une baignoire = {0}\n", this.baignoire ? "Oui" : "Non");
 
             // substitution par la méthode ToString : chaque classe hérite implicitement de la classe Object
@@ -45,7 +48,7 @@ namespace Terrain
 
         // méthode = fonction mais fonction =/= méthode
         // méthode car c'est dans une classe
-        public float EvaluationValeur()
+        public new float EvaluationValeur()
         {
             int facteur = 3000;
 

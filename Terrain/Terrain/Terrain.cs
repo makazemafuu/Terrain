@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Text.RegularExpressions;
-using Terrain;
 
 namespace Terrain
 {
@@ -12,12 +11,13 @@ namespace Terrain
 
         public Terrain(string Adresse, float Superficie, int NbCotesClotures, bool Riviere) : base(Adresse, Superficie)
         {
-            nbCotesClotures = NbCotesClotures;
-            riviere = Riviere;
+            this.nbCotesClotures = NbCotesClotures;
+            this.riviere = Riviere;
         }
 
         public override string ToString()
         {
+            // Get the € sign to work
             Console.OutputEncoding = Encoding.UTF8;
 
             string toString = base.ToString();

@@ -9,18 +9,25 @@ namespace Terrain
         public int nbPieces;
         public int nbEtages;
         public bool baignoire;
+        public bool jardin;
+
+        public List<Pieces> pieces = new List<Pieces>();
 
         // constructeur Maison (de la class Maison)
         // initialisation
-        public Maison(string Adresse, float Superficie, int NbPieces, int NbEtages, bool Baignoire) : base(Adresse, Superficie)
+        public Maison(string Adresse, float Superficie, int NbPieces, int NbEtages, bool Baignoire, bool jardin) : base(Adresse, Superficie)
         {
-            nbPieces = NbPieces;
-            nbEtages = NbEtages;
-            baignoire = Baignoire;
+            this.nbPieces = NbPieces;
+            this.nbEtages = NbEtages;
+            this.baignoire = Baignoire;
+            this.jardin = jardin;
         }
 
         public override string ToString()
         {
+            // Get the € sign to work
+            Console.OutputEncoding = Encoding.UTF8;
+
             // redéfinir la string ToString puisqu'on l'override (donc ajoute)
             string toString = base.ToString();
 
@@ -28,6 +35,7 @@ namespace Terrain
             toString += String.Format("Nombre de pièces = {0}\n", this.nbPieces);
             toString += String.Format("Nombre d'étages = {0}\n", this.nbEtages);
             toString += String.Format("Présence d'une baignoire = {0}\n", this.baignoire ? "Oui" : "Non");
+            toString += String.Format("Présence d'un jardin = {0}\n", this.baignoire ? "Oui" : "Non");
 
             // substitution par la méthode ToString : chaque classe hérite implicitement de la classe Object
             // ainsi ToString retourne une représentation sous forme de chaîne de caractère de cet objet
@@ -36,11 +44,10 @@ namespace Terrain
             // méthode = fonction mais fonction =/= méthode
             // méthode car c'est dans une classe
 
-            // Get the € sign to work
-            Console.OutputEncoding = Encoding.UTF8;
-
             if (baignoire)
             {
+                // Get the € sign to work
+                Console.OutputEncoding = Encoding.UTF8;
                 toString += String.Format("Coûts totaux de la construction de la baignoire (si applicable) = {0}€\n", this.CoutFinirSalleDeBain());
             }
             else
@@ -79,9 +86,9 @@ namespace Terrain
             int facteur = 50;
 
             if (this.baignoire) { facteur += 50; }
-            if (this.nbPieces > 4) { facteur += 50; }
+            if (this.nbEtages > 4) { facteur += 50; }
 
-            return this.nbPieces * facteur;
+            return this.nbEtages * facteur;
 
         }
 

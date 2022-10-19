@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Terrain
 {
@@ -6,9 +8,13 @@ namespace Terrain
     {
         static void Main(string[] args)
         {
-            Maison UneMaison = new Maison("11 Rue des Chartreux, 69001 Lyon", 58f, 10, 5, false);
-            Maison UneAutreMaison = new Maison("4 place Saint Louis, 22100 Dinan", 86.5f, 4, 2, true);
-            Maison UneDerniereMaison = new Maison("26 Boulevard Claude Lorrin, 40100 Dax", 25.2f, 6, 3, false);
+
+            // Get the € sign to work
+            Console.OutputEncoding = Encoding.UTF8;
+
+            Maison UneMaison = new Maison("11 Rue des Chartreux, 69001 Lyon", 58f, 6, 2, false, true);
+            Maison UneAutreMaison = new Maison("4 place Saint Louis, 22100 Dinan", 86.5f, 8, 3, true, true);
+            Maison UneDerniereMaison = new Maison("26 Boulevard Claude Lorrin, 40100 Dax", 25.2f, 2, 1, false, false);
 
             Terrain UnTerrain = new Terrain("55 route cabossée, 29130 Locmaria-Plouzané", 5000f, 2, true);
             Terrain UnAutreTerrain = new Terrain("102 route des volcans, 63000 Clermont-Ferrand", 1500f, 4, false);

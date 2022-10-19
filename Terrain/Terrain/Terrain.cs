@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 using Terrain;
 
@@ -17,10 +18,12 @@ namespace Terrain
 
         public override string ToString()
         {
+            Console.OutputEncoding = Encoding.UTF8;
+
             string toString = base.ToString();
             toString += String.Format("Nombre de cotés clorutés = {0}\n", this.nbCotesClotures);
             toString += String.Format("Présence d'une rivière = {0}\n", this.riviere ? "Oui" : "Non");
-            toString += String.Format("> VALEUR = {0}$", this.EvaluationValeur());
+            toString += String.Format("> VALEUR = {0}€", this.EvaluationValeur());
             return toString;
         }
 

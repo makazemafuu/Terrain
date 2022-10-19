@@ -1,17 +1,20 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Terrain
 {
     public class Maison : Bien
     {
+        public int nbPieces;
         public int nbEtages;
         public bool baignoire;
 
         // constructeur Maison (de la class Maison)
         // initialisation
-        public Maison(string Adresse, float Superficie, int NbEtages, bool Baignoire) : base(Adresse, Superficie)
+        public Maison(string Adresse, float Superficie, int NbPieces, int NbEtages, bool Baignoire) : base(Adresse, Superficie)
         {
+            nbPieces = NbPieces;
             nbEtages = NbEtages;
             baignoire = Baignoire;
         }
@@ -22,6 +25,7 @@ namespace Terrain
             string toString = base.ToString();
 
             // NE PAS OUBLIER LE + SINON TU ECRASE ! :'))
+            toString += String.Format("Nombre de pièces = {0}\n", this.nbPieces);
             toString += String.Format("Nombre d'étages = {0}\n", this.nbEtages);
             toString += String.Format("Présence d'une baignoire = {0}\n", this.baignoire ? "Oui" : "Non");
 
@@ -32,16 +36,19 @@ namespace Terrain
             // méthode = fonction mais fonction =/= méthode
             // méthode car c'est dans une classe
 
+            // Get the € sign to work
+            Console.OutputEncoding = Encoding.UTF8;
+
             if (baignoire)
             {
-                toString += String.Format("Coûts totaux de la construction de la baignoire (si applicable) = {0}$\n", this.CoutFinirSalleDeBain());
+                toString += String.Format("Coûts totaux de la construction de la baignoire (si applicable) = {0}€\n", this.CoutFinirSalleDeBain());
             }
             else
             {
                 // empty, on ne veut rien afficher
             }
 
-            toString += String.Format("> VALEUR = {0}$", this.EvaluationValeur());
+            toString += String.Format("> VALEUR = {0}€", this.EvaluationValeur());
 
             return toString;
         }
@@ -56,7 +63,7 @@ namespace Terrain
             // utilisé lorsqu'on ne nomme pas différent
 
             if (this.baignoire) { facteur += 10; }
-            if (this.nbEtages > 3) { facteur += 200; }
+            if (this.nbPieces > 3) { facteur += 200; }
 
             // Regex.IsMatch : permet de renvoyer une occurence qui est délimité par les \b dans la string qui suit
             // Si Regex.IsMatch = true par exemple ici pour Paris ça va renvoyer le facteur 7000
@@ -72,9 +79,9 @@ namespace Terrain
             int facteur = 50;
 
             if (this.baignoire) { facteur += 50; }
-            if (this.nbEtages > 4) { facteur += 50; }
+            if (this.nbPieces > 4) { facteur += 50; }
 
-            return this.nbEtages * facteur;
+            return this.nbPieces * facteur;
 
         }
 

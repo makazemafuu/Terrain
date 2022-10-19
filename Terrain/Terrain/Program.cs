@@ -10,12 +10,13 @@ namespace Terrain
         static void Main(string[] args)
         {
 
-            // Get the € sign to work
-            // Console.InputEncoding = Encoding.UTF8;
+            // Should get other unicode languages to work but doesn't here
+            // I had to go to my control panel > region > administrator and switch my region to Japan (then restart Windows)
+            // the @ & other codes below also didn't work except for the € sign
 
+            // Console.InputEncoding = Encoding.UTF8;
             // Get the € sign to work
             Console.OutputEncoding = Encoding.UTF8;
-            Console.OutputEncoding = Encoding.Unicode;
 
             Maison UneMaison = new Maison("11 Rue des Chartreux, 69001 Lyon", 58f, 6, 2, false, true);
             Maison UneAutreMaison = new Maison("4 place Saint Louis, 22100 Dinan", 86.5f, 8, 3, true, true);
@@ -41,6 +42,9 @@ namespace Terrain
 
             Proprietaire Neo = new Proprietaire("Makaze", "Mafuu", new Bien[] { UneDerniereMaison, UnDernierTerrain });
             Console.WriteLine(Neo);
+
+            Proprietaire Lukas = new Proprietaire("Salem", "Melas", new Bien[0]);
+            Console.WriteLine(Lukas);
 
         }
     }

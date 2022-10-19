@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Terrain
 {
@@ -12,18 +13,28 @@ namespace Terrain
         public bool baignoire;
         public bool jardin;
 
-        public List<Pieces> pieces = new List<Pieces>();
+        public Pieces[] pieces;
+        public static readonly List<string> nomsPieces = new List<string>() { "Cuisine", "Salle de bain", "Chambre", "Salon", "Garage", "Bureau", "Cave", "Grenier", "Terasse" };
 
         // constructeur Maison (de la class Maison)
         // initialisation
-        public Maison(string Adresse, float Superficie, int NbPieces, int NbEtages, bool Baignoire, bool jardin) : base(Adresse, Superficie)
+        public Maison(string Adresse, float Superficie, int NbPieces, int NbEtages, bool Baignoire, bool Jardin) : base(Adresse, Superficie)
         {
             this.nbPieces = NbPieces;
             this.nbEtages = NbEtages;
             this.baignoire = Baignoire;
-            this.jardin = jardin;
-        }
+            this.jardin = Jardin;
+            this.superficie = 0;
+            this.pieces = new Pieces[nbPieces];
 
+            Random rnd = new Random();
+
+            for (int i = 0; i < nbPieces; i++)
+            {
+                pieces[i] = new Pieces(rnd.Next(10, 30), nomsPieces[rnd.Next(8)]);
+                superficie += pieces[i].superficie;
+            }
+        }
         public override string ToString()
         {
             // Get the € sign to work
@@ -35,7 +46,9 @@ namespace Terrain
             // NE PAS OUBLIER LE + SINON TU ECRASE ! :'))
             // .Format est une méthode de formatage
             toString += String.Format("Nombre de pièces = {0}\n", this.nbPieces);
-            toString += String.Format("Nombre d'étages = {0}\n", this.nbEtages);
+            for (int i = 0; i < this.nbPieces; i++)
+                toString += String.Format("\n- {0}", this.pieces[i]);
+            toString += String.Format("\nNombre d'étages = {0}\n", this.nbEtages);
             toString += String.Format("Présence d'une baignoire = {0}\n", this.baignoire ? "Oui" : "Non");
             toString += String.Format("Présence d'un jardin = {0}\n", this.baignoire ? "Oui" : "Non");
 

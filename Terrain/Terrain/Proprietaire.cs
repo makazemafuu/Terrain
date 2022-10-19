@@ -32,7 +32,7 @@ namespace Terrain
 
         public override string ToString()
         {
-            string toString = String.Format("{0} {1} {2}\n", this.nom, this.prenom, this.bien?.Length != 0 ? "possède :" : "ne possède aucun bien");
+            string toString = String.Format("{0} {1} {2}\n", this.nom, this.prenom, this.bien?.Length != 0 ? "possède :" : "ne possède aucun bien.");
             toString += ListeBien();
 
             return toString;

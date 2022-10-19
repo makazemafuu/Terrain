@@ -7,8 +7,8 @@ namespace Terrain
     public class Pieces
     {
 
-        float superficie;
-        string nom;
+        public float superficie;
+        public string nom;
 
         public Pieces(float Superficie, string Nom)
         {
@@ -21,8 +21,7 @@ namespace Terrain
             // Get the € sign to work
             Console.OutputEncoding = Encoding.UTF8;
 
-            string toString = base.ToString();
-            toString += String.Format("Superficie des pièces = {0}m²\n", this.superficie);
+            string toString = String.Format("La pièce {0} fait {1}m²\n", this.nom, this.superficie);
             //toString += String.Format("> Nom = {0}€", this.nom());
             return toString;
         }
